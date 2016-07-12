@@ -19,7 +19,7 @@ var client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
  });
 
-var params = {screen_name: 'eblutr2'};
+var params = {screen_name: 'jsunderhood'};
 
 
 class App extends Component {
@@ -41,6 +41,12 @@ class InnerBox extends Component {
         tweets: [],
         count: 50
     };
+
+    var stream = client.stream('statuses/filter', {follow: '3014054307'});
+
+    stream.on('data', (t) => {
+        this.setState({tweets: this.state.tweets.concat(`${t.created_at.magenta}: ${t.text}\n`)});
+    });
 
     client.get('statuses/user_timeline', params, (error, tweets, response) => {
       if (!error) {
@@ -65,8 +71,11 @@ class InnerBox extends Component {
            ref="box"
            border={{type: 'line'}}
            style={{border: {fg: 'green'}}}
-           enableMouse
-           scrollable
+           scrollbar={{ bg: 'blue'}}
+           scrollable={true}
+           keyable={true}
+           keys={true}
+           vi={true}
        >
        {this.state.tweets}
       </box>
@@ -76,7 +85,9 @@ class InnerBox extends Component {
 const screen = blessed.screen({
   autoPadding: true,
   smartCSR: true,
-  title: 'react-blessed demo app'
+  title: 'react-blessed demo app',
+  scrollable: true,
+    sendFocus: true
 });
 
 screen.key(['escape', 'q', 'C-c'], function(ch, key) {
