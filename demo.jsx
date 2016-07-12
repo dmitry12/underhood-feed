@@ -12,10 +12,7 @@ console.log(`
         BOOTSTRAP
 
         `.green);
-console.log(process.env.TWITTER_CONSUMER_KEY);
-console.log(process.env.TWITTER_CONSUMER_SECRET);
-console.log(process.env.TWITTER_ACCESS_TOKEN_KEY);
-console.log(process.env.TWITTER_ACCESS_TOKEN_SECRET);
+
 var client = new Twitter({
     // TODO Add env
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -24,7 +21,7 @@ var client = new Twitter({
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
  });
 
-var params = {screen_name: 'dmitree'};
+var params = {screen_name: 'jsunderhood'};
 
 
 class App extends Component {
