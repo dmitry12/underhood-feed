@@ -64,6 +64,10 @@ class InnerBox extends Component {
     });
   }
 
+  componentDidMount() {
+    this.refs.box.focus();
+  }
+
   render() {
     return (
       <box
