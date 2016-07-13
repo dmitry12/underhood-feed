@@ -26,3 +26,4 @@ or
 ```
 set -a && source env.sh && ./node_modules/.bin/babel-node demo.jsx
 ```
+[![asciicast](https://asciinema.org/a/79491.png)](https://asciinema.org/a/79491)
